@@ -1,0 +1,711 @@
+<%@ Control Language="vb" AutoEventWireup="false" CodeFile="Search.ascx.vb" Inherits="Aqua.DNN.Modules.WIFishID.Search" %>
+<%@ Register TagPrefix="dnn" TagName="Label" Src="~/controls/LabelControl.ascx" %>
+<%@ Register TagPrefix="dnn" TagName="TextEditor" Src="~/controls/TextEditor.ascx"%>
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
+
+
+
+
+<%--Tabs--%>
+<div style="margin: 0px 0px 20px 0px;">
+    <br /><br /><br /><br />
+
+    <asp:LinkButton ID="lnkIdentifyByAppearanceTab" runat="server" style="font-weight: bold; font-size: 18px;" CssClass="lnkIdentifyByAppearanceTab" Visible="false">Identify by appearance</asp:LinkButton>
+    <asp:Label ID="lblIdentifyByAppearanceTab" runat="server" Text="Identify by appearance" style="font-weight: bold; font-size: 18px;"></asp:Label>
+     | 
+    <asp:LinkButton ID="lnkSearchTab" runat="server" style="font-weight: bold; font-size: 18px;" CssClass="lnkSearchTab">Search by name</asp:LinkButton>
+    <asp:Label ID="lblSearchTab" runat="server" Text="Search by name" style="font-weight: bold; font-size: 18px;" Visible="false"></asp:Label>
+    
+</div>
+
+
+<%--Search by name--%>
+<asp:Panel ID="pnlSearch" runat="server" Visible="false">
+    
+    <asp:TextBox ID="txtSearch" runat="server" Width="400px" CssClass="txtSearch"></asp:TextBox>
+    <br /><br />
+
+</asp:Panel>
+
+
+<%--Identify by Appearance--%>
+<asp:Panel ID="pnlIdentifyByAppearance" runat="server">
+    
+   
+    <div class="accordion" style="margin: 0px 0px 20px 0px;">
+
+
+       <%--Snout Shape--%>
+        <asp:Label ID="lblSnoutShapeTitle" CssClass="lblSnoutShapeTitle" runat="server" Text="-- Snout Shape --"></asp:Label>
+
+        <div>
+            <asp:Table ID="tblSnoutShape" runat="server" Width="100%" CellPadding="0" BorderWidth="1" GridLines="Horizontal">       
+                
+                <%--Terminal Mouth--%>
+                <asp:TableRow CssClass="mouth-terminal-filter">
+                    <asp:TableCell Width="20%">
+                        <img src="DesktopModules/WIFishID_Search/images/Filter_Images/mouth_terminal.jpg" class="filterImage" />
+                    </asp:TableCell>
+                    <asp:TableCell Width="80%" VerticalAlign="Middle">
+                        <span class="filterTitle">Terminal mouth</span><br />
+                        <span class="filterDescription">Mouth is on the end of snout</span>
+                    </asp:TableCell>
+                </asp:TableRow>
+
+                <%--Subterminal Mouth--%>
+                <asp:TableRow CssClass="mouth-subterminal-filter">
+                    <asp:TableCell Width="20%">
+                        <img src="DesktopModules/WIFishID_Search/images/Filter_Images/mouth_subterminal.jpg" class="filterImage" />
+                    </asp:TableCell>
+                    <asp:TableCell Width="80%" VerticalAlign="Middle">
+                        <span class="filterTitle">Subterminal mouth</span><br />
+                        <span class="filterDescription">Mouth is on the underside of snout</span>
+                    </asp:TableCell>
+                </asp:TableRow>
+
+                <%--Superior Mouth--%>
+                <asp:TableRow CssClass="mouth-superior-filter">
+                    <asp:TableCell Width="20%">
+                        <img src="DesktopModules/WIFishID_Search/images/Filter_Images/mouth_superior.jpg" class="filterImage" />
+                    </asp:TableCell>
+                    <asp:TableCell Width="80%" VerticalAlign="Middle">
+                        <span class="filterTitle">Superior mouth</span><br />
+                        <span class="filterDescription">Mouth is on the topside of snout</span>
+                    </asp:TableCell>
+                </asp:TableRow>
+
+                <%--Sucker-like mouth--%>
+                <asp:TableRow CssClass="mouth-inferior-filter">
+                    <asp:TableCell Width="20%">
+                        <img src="DesktopModules/WIFishID_Search/images/Filter_Images/mouth_inferior.jpg" class="filterImage" />
+                    </asp:TableCell>
+                    <asp:TableCell Width="80%" VerticalAlign="Middle">
+                        <span class="filterTitle">Sucker-like mouth</span><br />
+                        <span class="filterDescription">Mouth is on the underside of snout and has "lips"</span>
+                    </asp:TableCell>
+                </asp:TableRow>
+
+                <%--Short duck-billed mouth--%>
+                <asp:TableRow CssClass="mouth-duck-billed-filter">
+                    <asp:TableCell Width="20%">
+                        <img src="DesktopModules/WIFishID_Search/images/Filter_Images/mouth_duck-billed.jpg" class="filterImage" />
+                    </asp:TableCell>
+                    <asp:TableCell Width="80%" VerticalAlign="Middle">
+                        <span class="filterTitle">Short duck-billed mouth</span><br />
+                        <span class="filterDescription">Mouth is on the end of snout</span>
+                    </asp:TableCell>
+                </asp:TableRow>
+
+                <%--Long paddle-shaped mouth--%>
+                <asp:TableRow CssClass="mouth-paddle-shaped-filter">
+                    <asp:TableCell Width="20%">
+                        <img src="DesktopModules/WIFishID_Search/images/Filter_Images/mouth_paddle-shaped.jpg" class="filterImage" />
+                    </asp:TableCell>
+                    <asp:TableCell Width="80%" VerticalAlign="Middle">
+                        <span class="filterTitle">Long paddle-shaped mouth</span><br />
+                        <span class="filterDescription">Mouth is on the underside of snout</span>
+                    </asp:TableCell>
+                </asp:TableRow>
+
+                <%--Sucking disk (no jaw)--%>
+                <asp:TableRow CssClass="mouth-disk-filter">
+                    <asp:TableCell Width="20%">
+                        <img src="DesktopModules/WIFishID_Search/images/Filter_Images/mouth_disk.jpg" class="filterImage" />
+                    </asp:TableCell>
+                    <asp:TableCell Width="80%" VerticalAlign="Middle">
+                        <span class="filterTitle">Sucking disk (no jaw)</span><br />
+                        <span class="filterDescription">Found only on lamprey</span>
+                    </asp:TableCell>
+                </asp:TableRow>
+
+                <%--Clear Selection--%>
+                <asp:TableRow CssClass="resetSnoutShape">
+                    <asp:TableCell Width="100%" ColumnSpan="2" CssClass="resetButton">
+                        Clear Selection
+                    </asp:TableCell>
+                </asp:TableRow>
+
+            </asp:Table>
+        </div>
+
+
+
+        <%--Spines--%>
+        <asp:Label ID="lblSpinesTitle" CssClass="lblSpinesTitle" runat="server" Text="-- Spines --"></asp:Label>
+
+        <div>
+            <asp:Table ID="tblSpines" runat="server" Width="100%" CellPadding="0" BorderWidth="1" GridLines="Horizontal">       
+                
+                <%--No spines--%>
+                <asp:TableRow CssClass="spine-no-spines-filter">
+                     <asp:TableCell Width="20%">
+                        <img src="DesktopModules/WIFishID_Search/images/Filter_Images/spines_none.jpg" class="filterImage" />
+                    </asp:TableCell>
+                    <asp:TableCell Width="80%" VerticalAlign="Middle">
+                        <span class="filterTitle">No spines</span><br />
+                        <span class="filterDescription">Dorsal fin is entirely membrane</span>
+                    </asp:TableCell>
+                </asp:TableRow>
+
+                <%--One spine--%>
+                <asp:TableRow CssClass="spine-one-spine-filter">
+                    <asp:TableCell Width="20%">
+                        <img src="DesktopModules/WIFishID_Search/images/Filter_Images/spines_one.jpg" class="filterImage" />
+                    </asp:TableCell>
+                    <asp:TableCell Width="80%" VerticalAlign="Middle">
+                        <span class="filterTitle">One spine</span><br />
+                        <span class="filterDescription">At front of dorsal fin</span>
+                    </asp:TableCell>
+                </asp:TableRow>
+
+                <%--More than one spine with membrane--%>
+                <asp:TableRow CssClass="spine-membrane-filter">
+                    <asp:TableCell Width="20%">
+                        <img src="DesktopModules/WIFishID_Search/images/Filter_Images/spines_membrane.jpg" class="filterImage" />
+                    </asp:TableCell>
+                    <asp:TableCell Width="80%" VerticalAlign="Middle">
+                        <span class="filterTitle">More than one spine</span><br />
+                        <span class="filterDescription">With connecting membrane</span>
+                    </asp:TableCell>
+                </asp:TableRow>
+
+                <%--More than one spine with no membrane--%>
+                <asp:TableRow CssClass="spine-no-membrane-filter">
+                    <asp:TableCell Width="20%">
+                        <img src="DesktopModules/WIFishID_Search/images/Filter_Images/spines_no-membrane.jpg" class="filterImage" />
+                    </asp:TableCell>
+                    <asp:TableCell Width="80%" VerticalAlign="Middle">
+                        <span class="filterTitle">More than one spine</span><br />
+                        <span class="filterDescription">With no connecting membrane</span>
+                    </asp:TableCell>
+                </asp:TableRow>
+
+               <%--Clear Selection--%>
+                <asp:TableRow CssClass="resetSpines">
+                    <asp:TableCell Width="100%" ColumnSpan="2" CssClass="resetButton">
+                        Clear Selection
+                    </asp:TableCell>
+                </asp:TableRow>
+            </asp:Table>
+        </div>
+
+
+
+        <%--Tail Shape--%>
+        <asp:Label ID="lblTailShapeTitle" CssClass="lblTailShapeTitle" runat="server" Text="-- Tail Shape --"></asp:Label>
+
+        <div>
+            <asp:Table ID="tblTailShape" runat="server" Width="100%" CellPadding="0" BorderWidth="1" GridLines="Horizontal">       
+                
+                <%--Rounded--%>
+                <asp:TableRow CssClass="tail-rounded-filter">
+                    <asp:TableCell Width="20%">
+                        <img src="DesktopModules/WIFishID_Search/images/Filter_Images/tail_rounded.jpg" class="filterImage" />
+                    </asp:TableCell>
+                    <asp:TableCell Width="80%" VerticalAlign="Middle">
+                        <span class="filterTitle">Rounded tail</span><br />
+                        <span class="filterDescription">With no points or corners</span>
+                    </asp:TableCell>
+                </asp:TableRow>
+
+                <%--Forked--%>
+                <asp:TableRow CssClass="tail-forked-filter">
+                    <asp:TableCell Width="20%">
+                        <img src="DesktopModules/WIFishID_Search/images/Filter_Images/tail_forked.jpg" class="filterImage" />
+                    </asp:TableCell>
+                    <asp:TableCell Width="80%" VerticalAlign="Middle">
+                        <span class="filterTitle">Forked tail</span><br />
+                        <span class="filterDescription">In the shape of a V</span>
+                    </asp:TableCell>
+                </asp:TableRow>
+
+                <%--Square--%>
+                <asp:TableRow CssClass="tail-square-filter">
+                    <asp:TableCell Width="20%">
+                        <img src="DesktopModules/WIFishID_Search/images/Filter_Images/tail_square.jpg" class="filterImage" />
+                    </asp:TableCell>
+                    <asp:TableCell Width="80%" VerticalAlign="Middle">
+                        <span class="filterTitle">Square tail</span><br />
+                        <span class="filterDescription">With no forking in the middle</span>
+                    </asp:TableCell>
+                </asp:TableRow>
+                
+                <%--Clear Selection--%>
+                <asp:TableRow CssClass="resetTailShape">
+                    <asp:TableCell Width="100%" ColumnSpan="2" CssClass="resetButton">
+                        Clear Selection
+                    </asp:TableCell>
+                </asp:TableRow>
+
+            </asp:Table>
+        </div>
+
+        
+
+        <%--Body Shape--%>
+        <asp:Label ID="lblBodyShapeTitle" CssClass="lblBodyShapeTitle" runat="server" Text="-- Body Shape --"></asp:Label>
+
+        <div>
+            <asp:Table ID="tblBodyShape" runat="server" Width="100%" CellPadding="0" BorderWidth="1" GridLines="Horizontal">       
+                
+                <%--Cylindrical--%>
+                <asp:TableRow CssClass="body-shape-cylindrical-filter">
+                    <asp:TableCell Width="20%">
+                        <img src="DesktopModules/WIFishID_Search/images/Filter_Images/body_cylindrical.jpg" class="filterImage" />
+                    </asp:TableCell>
+                    <asp:TableCell Width="80%" VerticalAlign="Middle">
+                        <span class="filterTitle">Cylindrical</span><br />
+                        <span class="filterDescription">Like an eel</span>
+                    </asp:TableCell>
+                </asp:TableRow>
+
+                <%--Fusiform--%>
+                <asp:TableRow CssClass="body-shape-fusiform-filter">
+                    <asp:TableCell Width="20%">
+                        <img src="DesktopModules/WIFishID_Search/images/Filter_Images/body_fusiform.jpg" class="filterImage" />
+                    </asp:TableCell>
+                    <asp:TableCell Width="80%" VerticalAlign="Middle">
+                        <span class="filterTitle">Fusiform</span><br />
+                        <span class="filterDescription">Football-shaped when viewed from the side</span>
+                    </asp:TableCell>
+                </asp:TableRow>
+
+                <%--Laterally-compressed--%>
+                <asp:TableRow CssClass="body-shape-laterally-compressed-filter">
+                    <asp:TableCell Width="20%">
+                        <img src="DesktopModules/WIFishID_Search/images/Filter_Images/body_laterally-compressed.jpg" class="filterImage" />
+                    </asp:TableCell>
+                    <asp:TableCell Width="80%" VerticalAlign="Middle">
+                        <span class="filterTitle">Laterally-compressed</span><br />
+                        <span class="filterDescription">Tall and thin when viewed from the front</span>
+                    </asp:TableCell>
+                </asp:TableRow>
+
+                <%--Dorsoventrally-flattened--%>
+                <asp:TableRow CssClass="body-shape-dorsoventrally-flattened-filter">
+                    <asp:TableCell Width="20%">
+                        <img src="DesktopModules/WIFishID_Search/images/Filter_Images/body_dorsoventrally-flattened.jpg" class="filterImage" />
+                    </asp:TableCell>
+                    <asp:TableCell Width="80%" VerticalAlign="Middle">
+                        <span class="filterTitle">Dorsoventrally-flattened</span><br />
+                        <span class="filterDescription">Short and wide when viewed from the front</span>
+                    </asp:TableCell>
+                </asp:TableRow>
+                
+                <%--Clear Selection--%>
+                <asp:TableRow CssClass="resetBodyShape">
+                    <asp:TableCell Width="100%" ColumnSpan="2" CssClass="resetButton">
+                        Clear Selection
+                    </asp:TableCell>
+                </asp:TableRow>
+
+            </asp:Table>
+        </div>
+
+
+        
+        <%--Body Pattern--%>
+        <asp:Label ID="lblBodyPatternTitle" CssClass="lblBodyPatternTitle" runat="server" Text="-- Body Pattern --"></asp:Label>
+
+        <div>
+            <asp:Table ID="tblBodyPattern" runat="server" Width="100%" CellPadding="0" BorderWidth="1" GridLines="Horizontal">       
+                
+                <%--One or more stripes--%>
+                <asp:TableRow CssClass="body-pattern-stripes-filter">
+                    <asp:TableCell Width="20%">
+                        <img src="DesktopModules/WIFishID_Search/images/Filter_Images/body-pattern_stripes.jpg" class="filterImage" />
+                    </asp:TableCell>
+                    <asp:TableCell Width="80%" VerticalAlign="Middle">
+                        <span class="filterTitle">One or more stripes</span><br />
+                        <span class="filterDescription">From nose to tail</span>
+                    </asp:TableCell>
+                </asp:TableRow>
+
+                <%--Solid color--%>
+                <asp:TableRow CssClass="body-pattern-solid-filter">
+                    <asp:TableCell Width="20%">
+                        <img src="DesktopModules/WIFishID_Search/images/Filter_Images/body-pattern_solid.jpg" class="filterImage" />
+                    </asp:TableCell>
+                    <asp:TableCell Width="80%" VerticalAlign="Middle">
+                        <span class="filterTitle">Solid color</span><br />
+                        <span class="filterDescription">With no blotches or patterns</span>
+                    </asp:TableCell>
+                </asp:TableRow>
+
+                <%--Mottling--%>
+                <asp:TableRow CssClass="body-pattern-mottling-filter">
+                    <asp:TableCell Width="20%">
+                        <img src="DesktopModules/WIFishID_Search/images/Filter_Images/body-pattern_mottling.jpg" class="filterImage" />
+                    </asp:TableCell>
+                    <asp:TableCell Width="80%" VerticalAlign="Middle">
+                        <span class="filterTitle">Mottling</span><br />
+                        <span class="filterDescription">And irregular blotches</span>
+                    </asp:TableCell>
+                </asp:TableRow>
+
+                <%--Spots--%>
+                <asp:TableRow CssClass="body-pattern-spots-filter">
+                    <asp:TableCell Width="20%">
+                        <img src="DesktopModules/WIFishID_Search/images/Filter_Images/body-pattern_spots.jpg" class="filterImage" />
+                    </asp:TableCell>
+                    <asp:TableCell Width="80%" VerticalAlign="Middle">
+                        <span class="filterTitle">Spots</span><br />
+                        <span class="filterDescription">Well-defined, not blotches</span>
+                    </asp:TableCell>
+                </asp:TableRow>
+
+                <%--Bands or bars--%>
+                <asp:TableRow CssClass="body-pattern-bands-filter">
+                    <asp:TableCell Width="20%">
+                        <img src="DesktopModules/WIFishID_Search/images/Filter_Images/body-pattern_bands.jpg" class="filterImage" />
+                    </asp:TableCell>
+                    <asp:TableCell Width="80%" VerticalAlign="Middle">
+                        <span class="filterTitle">Bands or bars</span><br />
+                        <span class="filterDescription">From top to bottom</span>
+                    </asp:TableCell>
+                </asp:TableRow>
+                
+                <%--Clear Selection--%>
+                <asp:TableRow CssClass="resetBodyPattern">
+                    <asp:TableCell Width="100%" ColumnSpan="2" CssClass="resetButton">
+                        Clear Selection
+                    </asp:TableCell>
+                </asp:TableRow>
+
+            </asp:Table>
+        </div>
+
+
+
+        <%-- Distintive Features --%>
+        <asp:Label ID="lblDistinctiveFeaturesTitle" CssClass="lblDistinctiveFeaturesTitle" runat="server" Text="-- Distinctive Features --"></asp:Label>
+
+        <div>
+            <asp:Table ID="tblDistinctiveFeatures" runat="server" Width="100%" CellPadding="0" BorderWidth="1" GridLines="Horizontal">       
+                
+                <%--Sucking disk (no jaw)--%>
+                <asp:TableRow CssClass="distinctive-feature-sucking-disk-filter">
+                    <asp:TableCell Width="20%">
+                        <img src="DesktopModules/WIFishID_Search/images/Filter_Images/distinctive_sucking-disk.jpg" class="filterImage" />
+                    </asp:TableCell>
+                    <asp:TableCell Width="80%" VerticalAlign="Middle">
+                        <span class="filterTitle">Sucking disk (no jaw)</span><br />
+                        <span class="filterDescription">Found only on lamprey</span>
+                    </asp:TableCell>
+                </asp:TableRow>
+
+                <%--Long paddle-shaped mouth--%>
+                <asp:TableRow CssClass="distinctive-feature-paddle-snout-filter">
+                    <asp:TableCell Width="20%">
+                        <img src="DesktopModules/WIFishID_Search/images/Filter_Images/distinctive_paddle-shaped.jpg" class="filterImage" />
+                    </asp:TableCell>
+                    <asp:TableCell Width="80%" VerticalAlign="Middle">
+                        <span class="filterTitle">Long paddle-shaped mouth</span><br />
+                        <span class="filterDescription">Mouth is on underside of snout</span>
+                    </asp:TableCell>
+                </asp:TableRow>
+
+                <%--Long snout with many teeth--%>
+                <asp:TableRow CssClass="distinctive-feature-long-snout-filter">
+                    <asp:TableCell Width="20%">
+                        <img src="DesktopModules/WIFishID_Search/images/Filter_Images/distinctive_long-snout.jpg" class="filterImage" />
+                    </asp:TableCell>
+                    <asp:TableCell Width="80%" VerticalAlign="Middle">
+                        <span class="filterTitle">Long snout</span><br />
+                        <span class="filterDescription">Narrow with many teeth</span>
+                    </asp:TableCell>
+                </asp:TableRow>
+
+                <%--Whiskers--%>
+                <asp:TableRow CssClass="distinctive-feature-barbels-filter">
+                    <asp:TableCell Width="20%">
+                        <img src="DesktopModules/WIFishID_Search/images/Filter_Images/distinctive_whiskers.jpg" class="filterImage" />
+                    </asp:TableCell>
+                    <asp:TableCell Width="80%" VerticalAlign="Middle">
+                        <span class="filterTitle">Whiskers</span><br />
+                        <span class="filterDescription">(Barbels) defined and easy to see</span>
+                    </asp:TableCell>
+                </asp:TableRow>
+
+                <%--More than one spine--%>
+                <asp:TableRow CssClass="distinctive-feature-unconnected-spines-filter">
+                    <asp:TableCell Width="20%">
+                        <img src="DesktopModules/WIFishID_Search/images/Filter_Images/distinctive_no-membrane.jpg" class="filterImage" />
+                    </asp:TableCell>
+                    <asp:TableCell Width="80%" VerticalAlign="Middle">
+                        <span class="filterTitle">More than one spine</span><br />
+                        <span class="filterDescription">With no connecting membrane</span>
+                    </asp:TableCell>
+                </asp:TableRow>
+
+                <%--Snake-like--%>
+                <asp:TableRow CssClass="distinctive-feature-snake-like-filter">
+                    <asp:TableCell Width="20%">
+                        <img src="DesktopModules/WIFishID_Search/images/Filter_Images/distinctive_snake-like.jpg" class="filterImage" />
+                    </asp:TableCell>
+                    <asp:TableCell Width="80%" VerticalAlign="Middle">
+                        <span class="filterTitle">Snake-like</span><br />
+                        <span class="filterDescription">Long flexible body</span>
+                    </asp:TableCell>
+                </asp:TableRow>
+                
+                <%--Clear Selection--%>
+                <asp:TableRow CssClass="resetDistinctiveFeatures">
+                    <asp:TableCell Width="100%" ColumnSpan="2" CssClass="resetButton">
+                        Clear Selection
+                    </asp:TableCell>
+                </asp:TableRow>
+
+            </asp:Table>
+        </div>
+
+        
+
+        <%-- Family --%>
+        <asp:Label ID="lblFamilyTitle" CssClass="lblFamilyTitle" runat="server" Text="-- Family --"></asp:Label>
+
+        <div>
+            <asp:Table ID="tblFamilies" runat="server" Width="100%" CellPadding="8" BorderWidth="1" GridLines="Both">       
+                
+                <asp:TableRow CssClass="family-bowfins-filter">
+                    <asp:TableCell>
+                        Bowfins (Amiidae)
+                    </asp:TableCell>
+                </asp:TableRow>
+
+                <asp:TableRow CssClass="family-bullheadCatfishes-filter">
+                    <asp:TableCell>
+                        Bullhead Catfishes (Ictaluridae)
+                    </asp:TableCell>
+                </asp:TableRow>
+
+                <asp:TableRow CssClass="family-burbots-filter">
+                    <asp:TableCell>
+                        Burbot (Lotidae)
+                    </asp:TableCell>
+                </asp:TableRow>
+
+                <asp:TableRow CssClass="family-drums-filter">
+                    <asp:TableCell>
+                        Drums (Sciaenidae)
+                    </asp:TableCell>
+                </asp:TableRow>
+
+                <asp:TableRow CssClass="family-freshwaterEels-filter">
+                    <asp:TableCell>
+                        Freshwater Eels (Anguillidae)
+                    </asp:TableCell>
+                </asp:TableRow>
+
+                <asp:TableRow CssClass="family-gars-filter">
+                    <asp:TableCell>
+                        Gars (Lepisosteidae)
+                    </asp:TableCell>
+                </asp:TableRow>
+
+                <asp:TableRow CssClass="family-gobies-filter">
+                    <asp:TableCell>
+                        Gobies (Gobiidae)
+                    </asp:TableCell>
+                </asp:TableRow>
+
+                <asp:TableRow CssClass="family-herrings-filter">
+                    <asp:TableCell>
+                        Herrings (Clupeidae)
+                    </asp:TableCell>
+                </asp:TableRow>
+
+                <asp:TableRow CssClass="family-killifishes-filter">
+                    <asp:TableCell>
+                        Killifishes and topminnows  (Fundulidae)
+                    </asp:TableCell>
+                </asp:TableRow>
+
+                <asp:TableRow CssClass="family-lampreys-filter">
+                    <asp:TableCell>
+                        Lampreys (Petromyzontidae)
+                    </asp:TableCell>
+                </asp:TableRow>
+
+                <asp:TableRow CssClass="family-livebearers-filter">
+                    <asp:TableCell>
+                        Livebearers (Poeciliidae)
+                    </asp:TableCell>
+                </asp:TableRow>
+
+                <asp:TableRow CssClass="family-minnows-filter">
+                    <asp:TableCell>
+                        Minnows (Cyprinidae)
+                    </asp:TableCell>
+                </asp:TableRow>
+
+                <asp:TableRow CssClass="family-mooneyes-filter">
+                    <asp:TableCell>
+                        Mooneyes (Hiodontidae)
+                    </asp:TableCell>
+                </asp:TableRow>
+
+                <asp:TableRow CssClass="family-mudminnows-filter">
+                    <asp:TableCell>
+                        Mudminnows (Umbridae)
+                    </asp:TableCell>
+                </asp:TableRow>
+
+                <asp:TableRow CssClass="family-paddlefishes-filter">
+                    <asp:TableCell>
+                        Paddlefishes (Polyodontidae)
+                    </asp:TableCell>
+                </asp:TableRow>
+
+                <asp:TableRow CssClass="family-perches-filter">
+                    <asp:TableCell>
+                        Perches (Percidae)
+                    </asp:TableCell>
+                </asp:TableRow>
+
+                <asp:TableRow CssClass="family-pikes-filter">
+                    <asp:TableCell>
+                        Pikes (Esocidae)
+                    </asp:TableCell>
+                </asp:TableRow>
+
+                <asp:TableRow CssClass="family-piratePerches-filter">
+                    <asp:TableCell>
+                        Pirate perches (Aphredoderidae)
+                    </asp:TableCell>
+                </asp:TableRow>
+
+                <asp:TableRow CssClass="family-sculpins-filter">
+                    <asp:TableCell>
+                        Sculpins (Cottidae)
+                    </asp:TableCell>
+                </asp:TableRow>
+
+                <asp:TableRow CssClass="family-silversides-filter">
+                    <asp:TableCell>
+                        Silversides (Atherinidae)
+                    </asp:TableCell>
+                </asp:TableRow>
+
+                <asp:TableRow CssClass="family-smelts-filter">
+                    <asp:TableCell>
+                        Smelts (Osmeridae)
+                    </asp:TableCell>
+                </asp:TableRow>
+
+                <asp:TableRow CssClass="family-sticklebacks-filter">
+                    <asp:TableCell>
+                        Sticklebacks (Gasterosteidae)
+                    </asp:TableCell>
+                </asp:TableRow>
+
+                <asp:TableRow CssClass="family-sturgeons-filter">
+                    <asp:TableCell>
+                        Sturgeons (Acipenseridae)
+                    </asp:TableCell>
+                </asp:TableRow>
+
+                <asp:TableRow CssClass="family-suckers-filter">
+                    <asp:TableCell>
+                        Suckers (Catostomidae)
+                    </asp:TableCell>
+                </asp:TableRow>
+
+                <asp:TableRow CssClass="family-sunfishes-filter">
+                    <asp:TableCell>
+                        Sunfishes (Centrarchidae)
+                    </asp:TableCell>
+                </asp:TableRow>
+
+                <asp:TableRow CssClass="family-temperateBasses-filter">
+                    <asp:TableCell>
+                        Temperate Basses (Moronidae)
+                    </asp:TableCell>
+                </asp:TableRow>
+
+                <asp:TableRow CssClass="family-troutperches-filter">
+                    <asp:TableCell>
+                        Troutperches (Percopsidae)
+                    </asp:TableCell>
+                </asp:TableRow>
+
+                <asp:TableRow CssClass="family-trouts-filter">
+                    <asp:TableCell>
+                        Trouts (Salmonidae)
+                    </asp:TableCell>
+                </asp:TableRow>
+
+                
+                <%--Clear Selection--%>
+                <asp:TableRow CssClass="resetFamily">
+                    <asp:TableCell Width="100%" ColumnSpan="2" CssClass="resetButton">
+                        Clear Selection
+                    </asp:TableCell>
+                </asp:TableRow>
+
+            </asp:Table>
+        </div>
+
+    </div>
+
+</asp:Panel>
+
+
+
+
+
+<%--Results count--%>
+<asp:Label ID="lblResultsCount" CssClass="lblResultsCount" runat="server"></asp:Label>
+
+<div class="jsResultsCount">
+    There are <span class="jsCount">0</span> fish.  <span style="margin: 0px 0px 0px 10px;"><a href="#" class="resetAllFilters">Clear All Selections</a></span>
+</div>
+
+
+<div id="divFishList">
+<ul id="ulFishList" style="margin-top: 20px;">
+    <asp:Repeater ID="rptAllFishList" runat="server">  
+        <ItemTemplate>
+
+           
+
+            <li class='<%# Eval("FishFilterClasses")%>' style="border-top: 1px solid gray;">
+
+                <a href='<%# GetDetailsPageURL(Eval("FishID"))%>'>
+
+                <asp:Table runat="server" CellPadding="5">
+
+                    
+                    <asp:TableRow>
+
+                        <asp:TableCell Width="100px">  
+                            <a href='<%# GetDetailsPageURL(Eval("FishID"))%>'>                      
+                            <asp:Image ID="imgMainPhoto" ImageUrl='<%# GetMainImage(Eval("FishID"), "Thumbnail")%>' AlternateText='<%# Eval("CommNameStr")%>' runat="server" CssClass="mainImage" /> 
+                            </a>                  
+                        </asp:TableCell>
+                        
+                        <asp:TableCell>
+                            <a href='<%# GetDetailsPageURL(Eval("FishID"))%>'>
+                            <asp:Label ID="lblCommonName" runat="server" Text='<%# Eval("DisplayName")%>' CssClass="commonName"></asp:Label><br />
+                            <asp:Label ID="lblScientificName" runat="server" Text='<%# Eval("SciNameStr")%>' CssClass="scientificName"></asp:Label>
+                            <asp:Label ID="lblHiddenCommonName" runat="server" Text='<%# Eval("CommNameStr")%>' CssClass="hidden"></asp:Label><br />
+                            </a>  
+                        </asp:TableCell>
+
+                    </asp:TableRow>
+                    
+                </asp:Table>    
+                    
+                </a>
+                        
+            </li>
+
+          
+
+        </ItemTemplate>
+    </asp:Repeater>
+</ul>
+</div>
+
+
+

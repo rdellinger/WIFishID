@@ -1,0 +1,100 @@
+﻿input.watermark { 
+    color: #999; 
+}
+
+input {
+	padding:4px;
+	text-indent: 5px;
+	width:200px;
+	font-size:14px;
+}
+
+.highlight {
+    background-color: whitesmoke;
+}
+
+.commonName {
+    font-family: georgia, helvetica, arial, sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.scientificName {
+    font-family: georgia, helvetica, arial, sans-serif;
+    font-size: 16px;
+}
+
+
+.jsCount {
+    font-weight: bold;
+}
+
+
+.hidden{
+	display: none;
+}
+
+.none {
+    list-style-type: none;
+    width: 100%;
+}
+
+
+ul {
+  width: 740px;
+  margin: 0;
+  padding: 0;
+}
+ 
+li {
+  font: 14px/1.5 Helvetica, Verdana, sans-serif;
+  border-bottom: 1px solid #ccc;
+  padding: 10px 0px 10px 0px;
+}
+ 
+li:last-child {
+  border: none;
+}
+ 
+li a {
+  text-decoration: none;
+  color: #000;
+  display: block;
+}
+
+
+.accordion tr {
+    cursor: pointer;
+}
+
+.accordion tr:hover {
+    background-color: whitesmoke;
+}
+
+.resetButton {
+    background-color: lightgoldenrodyellow;
+    text-align: center;
+    font-weight: bold;
+    line-height: 40px;
+}
+
+.resetButton:hover {
+    background-color: orange;
+}
+
+.filterTitle {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.filterDescription {
+    font-size: 12px;
+}
+
+.filterImage {
+    max-width: 85px;
+}
+
+.selectedFilter {
+    background-color: lightgreen;
+}

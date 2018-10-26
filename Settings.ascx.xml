@@ -1,0 +1,15 @@
+<%@ Control Language="vb" AutoEventWireup="false" CodeFile="Settings.ascx.vb" Inherits="Aqua.DNN.Modules.WIFishID.Settings" %>
+<%@ Register TagPrefix="dnn" TagName="Label" Src="~/controls/LabelControl.ascx" %>
+
+
+<table width="600">
+    <tr class="SubHead">
+        <td width="200"><dnn:Label ID="plDetailsPageURL" runat="server" ControlName="plDetailsPageURL" Suffix=":"></dnn:Label></td>
+        <td width="400">
+            <asp:TextBox ID="txtDetailsPageURL" runat="server"></asp:TextBox>
+        </td>
+    </tr>
+</table>
+
+
+<br /><br /><br />
